@@ -26,6 +26,8 @@
 # Consider your entire calibration document. What is the sum of all the calibration values?
 from collections import defaultdict
 
+import re
+
 
 def read_file(filename):
     with open(filename, 'r') as file:
@@ -34,27 +36,17 @@ def read_file(filename):
 
 
 def trebuchet():
+    result = []
     data = read_file('trebuchet_input.txt')
     print(data)
-    result = []
-    for index, line in enumerate(data):
-        nums = []
-        for char in line:
-            if char.isdigit():
-                nums.append(char)
-        if len(nums) < 2:
-            result.append(nums[0] + nums[0])
-        else:
-            joined_nums = nums[0] + nums[-1]
+    for line in data:
+        left = re.search(r'\d', line)
+        right = re.search(r'\d', line[::-1])
+        result.append(left.group() + right.group())
+    print(result)
 
-            result.append(joined_nums)
-
-    return sum([int(i) for i in result])
+    return sum(int(i) for i in result)
 
 
 
 print(trebuchet())
-
-
-
-
