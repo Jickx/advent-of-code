@@ -1,41 +1,39 @@
 from utils.io import read_lines
 
 
-def caculate_wrap_area(sizes: list) -> int:
+def calculate_wrap_area(sizes: list[str]) -> int:
     l, w, h = map(int, sizes)
     side1 = l * w
     side2 = w * h
     side3 = h * l
     min_area_side = min(side1, side2, side3)
-    cube_area = sum([2 * side1, 2 * side2, 2 * side3])
-    return cube_area + min_area_side
+    surface_area = 2 * side1 + 2 * side2 + 2 * side3
+    return surface_area + min_area_side
 
 
 def calculate_ribbon_length(sizes: list) -> int:
-    sizes = list(map(int, sizes))
-    max_size = max(sizes)
-    sizes.remove(max_size)
-    return 2 * sum(sizes)
+    a, b, c = sorted(map(int, sizes))
+    return 2 * (a + b)
 
 
 def calculate_bow_length(sizes: list) -> int:
-    l, h, w = map(int, sizes)
-    return l * h * w
+    l, w, h = map(int, sizes)
+    return l * w * h
 
 
-def wrapping_part_1(lines: list) -> int:
+def wrapping_part_1(input_lines: list[str]) -> int:
     overall_area = 0
-    for line in lines:
-        area = caculate_wrap_area(line.split("x"))
-        overall_area += area
+    for line in input_lines:
+        overall_area += calculate_wrap_area(line.split("x"))
     return overall_area
 
 
-def wrapping_part_2(lines: list) -> int:
+def wrapping_part_2(input_lines: list[str]) -> int:
     overall_length = 0
-    for line in lines:
-        ribbon_length = calculate_ribbon_length(line[::].split("x"))
-        bow_length = calculate_bow_length(line[::].split("x"))
+    for line in input_lines:
+        dims = line.split("x")
+        ribbon_length = calculate_ribbon_length(dims)
+        bow_length = calculate_bow_length(dims)
         overall_length += ribbon_length + bow_length
     return overall_length
 
