@@ -7,4 +7,3 @@ def read_input(path: str) -> str:
 def read_lines(path: str) -> List[str]:
     with open(path, "r") as f:
         return [line.rstrip("\n") for line in f]
-
