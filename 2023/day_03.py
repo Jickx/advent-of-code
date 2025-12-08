@@ -1,6 +1,7 @@
 from icecream import ic
+from utils.io import read_input
 
-query = open('input/day_03.txt', 'r').read()
+query = read_input('input/day_03.txt')
 
 
 lines = query.split('\n')

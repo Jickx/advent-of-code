@@ -2,6 +2,7 @@
 Advent of Code 2023 - Day 02 (https://adventofcode.com/2023/day/2)
 """
 from collections import defaultdict
+from utils.io import read_lines
 
 MAX_CUBES = {
     'red': 12,
@@ -63,10 +64,7 @@ def count_games_part_2(data):
     return result
 
 
-with open('input/day_02.txt', 'r') as f:
-    data = []
-    for line in f:
-        data.append(line.strip('\n'))
+data = read_lines('input/day_02.txt')
 
 assert count_games_part_1(data) == 2727
 assert count_games_part_2(data) == 56580

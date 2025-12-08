@@ -1,5 +1,4 @@
-with open('input/day_01.txt', 'r') as f:
-    query = f.read().strip()
+from utils.io import read_input
 
 
 def find_floor_part_1(sequence: str) -> int:
@@ -24,15 +23,20 @@ def find_floor_part_2(sequence: str) -> int:
     return -1
 
 
-assert find_floor_part_1("(())") == 0
-assert find_floor_part_1("()()") == 0
-assert find_floor_part_1("(((") == 3
-assert find_floor_part_1("(()(()(") == 3
-assert find_floor_part_1("))(((((") == 3
-assert find_floor_part_1("())") == -1
-assert find_floor_part_1("))(") == -1
-assert find_floor_part_1(")))") == -3
-assert find_floor_part_1(")())())") == -3
+def run_tests():
+    assert find_floor_part_1("(())") == 0
+    assert find_floor_part_1("()()") == 0
+    assert find_floor_part_1("(((") == 3
+    assert find_floor_part_1("(()(()(") == 3
+    assert find_floor_part_1("))(((((") == 3
+    assert find_floor_part_1("())") == -1
+    assert find_floor_part_1("))(") == -1
+    assert find_floor_part_1(")))") == -3
+    assert find_floor_part_1(")())())") == -3
 
-print(find_floor_part_1(query))
-print(find_floor_part_2(query))
+
+if __name__ == "__main__":
+    run_tests()
+    query = read_input("input/day_01.txt")
+    print(find_floor_part_1(query))
+    print(find_floor_part_2(query))

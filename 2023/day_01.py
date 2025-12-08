@@ -2,8 +2,9 @@
 Advent of Code 2023 - Day 01 (https://adventofcode.com/2023/day/1)
 """
 import re
+from utils.io import read_input
 
-query = open('input/day_01.txt', 'r').read()
+query = read_input('input/day_01.txt')
 lines = query.split('\n')
 
 num_str = {
