@@ -1,5 +1,5 @@
 """
-Advent of Code 2023 - Day 02 (https://adventofcode.com/2023/day/2)
+Advent of Code year_2023 - Day 02 (https://adventofcode.com/2023/day/2)
 """
 from collections import defaultdict
 from utils.io import read_lines
